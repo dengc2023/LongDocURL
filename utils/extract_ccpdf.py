@@ -1,4 +1,3 @@
-# word级别的解析
 import os
 import json
 import fitz
