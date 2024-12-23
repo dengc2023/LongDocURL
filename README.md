@@ -7,7 +7,7 @@ Repository for the paper "LongDocURL: a Comprehensive Multimodal Long Document B
 
 # About LongDocURL
 The LongDocURL benchmark is specifically designed for assessing the ability of models in long document understanding.
-We collect 2,325 high-quality question-answering pairs, covering more than 396 PDF-formatted documents and 33,000 pages, significantly outperforming existing benchmarks.
+We collect 2,325 high-quality question-answering pairs, covering 396 PDF-formatted documents and more than 33,000 pages, significantly outperforming existing benchmarks.
 Our open dataset can be found at [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/). You can refer to [Dataset Website](https://longdocurl.github.io/) for more infomation.
 
 # Evaluation
