@@ -3,7 +3,7 @@ Repository for the paper "LongDocURL: a Comprehensive Multimodal Long Document B
 
 **Paper**: [paper](https://arxiv.org/pdf/2412.18424)
 
-**Blog Website**: [https://longdocurl.github.io/](https://longdocurl.github.io/)
+**Blog Website**: [longdocurl. github. io](https://longdocurl.github.io/)
 
 **Dataset**: [dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
 
