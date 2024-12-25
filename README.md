@@ -1,9 +1,9 @@
 # Welcome to LongDocURL!
 Repository for the paper "LongDocURL: a Comprehensive Multimodal Long Document Benchmark Integrating Understanding, Reasoning, and Locating".
 
-**Paper**: 
+**Paper**: [arxiv](https://arxiv.org/pdf/2412.18424)
 
-**Dataset Blog**: [https://longdocurl.github.io/](https://longdocurl.github.io/).
+**Dataset Blog**: [github.io](https://longdocurl.github.io/).
 
 # About LongDocURL
 The LongDocURL benchmark is specifically designed for assessing the ability of models in long document understanding.
