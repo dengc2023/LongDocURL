@@ -22,9 +22,39 @@ Download PDFs and qa file (.jsonl) from [LongDocURL](https://huggingface.co/data
 bash utils/run_extract_ccpdf.sh
 ```
 
-**2. Evaluating API Models**
+Images will be organized in following ways:
+```markdown
+├── 4000
+│   └── 4000001.png
+└── 4001
+    ├── 4001001.png
+    └── 4001002.png
+```
+
+**2. Other Configurations**
+- `api key`: update `config/api_config.json`, used to extract short answer from detailed response.
+- `qa jsonl`: update `data/LongDocURL.jsonl`, downloaded from [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/).
+- `api models`: default `gpt4o-2024-05-13` for extracting short answer. if use our codes to evaluate proprietary models, please check and modify `eval/api_models/model.py`.
+
+**3. Evaluating API Models**
 ```bash
 bash scripts/eval_api_models.sh
+```
+
+Options to note:
+- `process_mode`: default `serial`. Set `parallel` if parallel execution is needed. Default number of parallel processes is 8.
+- `image_prefix`: default `None`. Add image prefix when needed in order to get proper image paths.
+- `model_name`: the model abbreviation is mapped to the actual model class defined in `eval/api_models/model.py`,
+
+**4. Claculate Metrics**
+
+To calculate the final generalized accuracy:
+```bash
+bash scripts/calculate_metrics.sh
+```
+To calculate generalized accuracy in a more fine-grained way like `evaluation_results/scores_sample_fine_grained.json`:
+```bash
+bash scripts/calculate_metrics_fine_grained.sh
 ```
 
 #  🏆 Leaderboard 🏆
