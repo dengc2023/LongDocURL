@@ -32,9 +32,9 @@ Images will be organized in following ways:
 ```
 
 **2. Other Configurations**
-- `api key`: update `config/api_config.json`, used to extract short answer from detailed response.
-- `qa jsonl`: update `data/LongDocURL.jsonl`, downloaded from [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/).
-- `api models`: default `gpt4o-2024-05-13` for extracting short answer. if use our codes to evaluate proprietary models, please check and modify `eval/api_models/model.py`.
+- `api_key`: update `config/api_config.json`, used to extract short answer from detailed response.
+- `qa_jsonl`: update `data/LongDocURL.jsonl`, downloaded from [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/).
+- `api_models`: default `gpt4o-2024-05-13` for extracting short answer. if use our codes to evaluate proprietary models, please check and modify `eval/api_models/model.py`.
 
 **3. Evaluating API Models**
 ```bash
