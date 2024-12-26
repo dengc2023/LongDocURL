@@ -1,6 +1,7 @@
-# # TODO:
-# import sys
-# sys.path.append("/root_dir/LongDocURL/")
+# TODO:
+import sys
+import pathlib
+sys.path.append(str(pathlib.Path(__file__).absolute().parent.parent.parent))
 
 import argparse
 import os
@@ -25,7 +26,8 @@ from pure_ocr_utils import *
 system_prompt = "You are an expert in visual document question-answering, please answer our questions based on the given images.\n"
 
 # TODO
-project_prefix = "/root_dir/LongDocURL/"
+project_prefix = "/mnt/workspace/Projects/CodeLib/LongDocURL/"
+
 config_file = os.path.join(project_prefix, "config/api_config.json")
 extractor_prompt_path = os.path.join(project_prefix, "eval/prompt_for_answer_extraction.md")
 
@@ -38,13 +40,18 @@ model_name2inferencer = {"gpt4o": "GPT4oInferencer", "gemini15_pro": "Gemini15Pr
 
 prompt_sign = True
 
-def preprocess(input_datapath, output_datapath):
+def preprocess(input_datapath, output_datapath, image_prefix=None):
     dataset = read_jsonl_file(input_datapath)
     print("dataset cnt: ", len(dataset))
 
     if os.path.exists(output_datapath):
         output_dataset = read_jsonl_file(output_datapath)
         dataset = delete_generate_dataset(dataset, output_dataset)
+
+    if image_prefix is not None:
+        for _ in dataset:
+            for i, image_path in enumerate(_["images"]):
+                _["images"][i] = os.path.join(image_prefix, "/".join(image_path.split("/")[-2:]))
 
     print("dataset cnt need to do: ", len(dataset))
 
@@ -169,11 +176,12 @@ def evaluate(dataset, output_datapath, model_name="gpt4o", process_mode="serial"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--qa_file', type=str, default="")
-    parser.add_argument('--results_file', type=str, default="") 
-    parser.add_argument('--process_mode', type=str, default="parallel") # serial/parallel
+    parser.add_argument('--qa_file', type=str, default="data/LongDocURL.jsonl")
+    parser.add_argument('--results_file', type=str, default="evaluation_results/api_models/results_gpt4o.jsonl") 
+    parser.add_argument('--process_mode', type=str, default="serial") # serial/parallel
     # parser.add_argument('--input_format', type=str, default="e2e") # e2e/ocr
-    parser.add_argument('--model_name', type=str, default="gpt4o") # gemini15_pro/gemini15_pro_flash/claude35_sonnet/claude3_haiku/gpt4o
+    parser.add_argument('--image_prefix', type=str, default="/mnt/achao/Downloads/pdf_pngs/4000-4999")
+    parser.add_argument('--model_name', type=str, default="gpt4o") # gemini15_pro/claude35_sonnet/qwen_vl_max/gpt4o
 
     args = parser.parse_args()
 
@@ -181,7 +189,9 @@ if __name__ == "__main__":
     output_datapath = args.results_file
 
     # load data
-    dataset = preprocess(input_datapath, output_datapath)
+    # dataset = preprocess(input_datapath, output_datapath)
+    # if image paths are not modified in .jsonl file, add image prefix when executed
+    dataset = preprocess(input_datapath, output_datapath, image_prefix=args.image_prefix)
 
     try_cnt = 2
     while try_cnt:

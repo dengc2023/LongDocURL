@@ -1,6 +1,6 @@
 {
     "gpt4o": {
-        "access_key": "<your_key>",
+        "access_key": "<api_key>",
         "base_url": "<base_url>"
     }
 }

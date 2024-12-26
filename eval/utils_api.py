@@ -16,7 +16,8 @@ def get_alimama_oss_bucket():
     bucket = oss2.Bucket(oss2.Auth(access_key_id, access_key_secret), endpoint, bucket_name)
     return bucket
 
-bucket = get_alimama_oss_bucket()
+# # uncomment if oss paths are used
+# bucket = get_alimama_oss_bucket()
 
 
 def encode_image_to_base64(image_path):

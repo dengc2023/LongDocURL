@@ -12,13 +12,15 @@ import oss2
 import json
 
 # TODO
-project_prefix = "/root_dir/LongDocURL/"
+project_prefix = "/mnt/workspace/Projects/CodeLib/LongDocURL/"
 config_file = os.path.join(project_prefix, "config/api_config.json")
 
 
 class APIInferencer(ABC):
     def __init__(self):
-        self.bucket = self.get_alimama_oss_bucket()
+        pass
+        # uncomment if oss paths are used
+        # self.bucket = self.get_alimama_oss_bucket()
 
     def get_alimama_oss_bucket(self):
         # TODO
