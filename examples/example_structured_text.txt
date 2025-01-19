@@ -1,0 +1,9 @@
+(type: head, sub_type: page_header, box: (0.02, 0.0, 0.77, 0.02)) Innovations in the Food System： Exploring the Future of Fcod： Proceedings of a Workshop
+(type: title, sub_type: none, box: (0.28, 0.1, 0.73, 0.29)) INNOVATIONS in the FOODSYSTEM EXPLORING THE FUTURE OF FOOD
+(type: text, sub_type: none, box: (0.26, 0.34, 0.74, 0.36)) PROCEEDINGS OF A WORKSHOP
+(type: text, sub_type: none, box: (0.31, 0.44, 0.69, 0.5)) Melissa Maitin-Shepard， Rapporteur Food Forum
+(type: text, sub_type: para, box: (0.36, 0.52, 0.63, 0.53)) Food and Nutrition Board
+(type: text, sub_type: para, box: (0.35, 0.56, 0.66, 0.57)) Health and Medicine Division
+(type: text, sub_type: para, box: (0.25, 0.61, 0.75, 0.65)) The National Academies of SCIENCES· ENGINEERING ·MEDICINE
+(type: text, sub_type: para, box: (0.33, 0.83, 0.67, 0.89)) THE NATIONAL ACADEMIES PRESS Washington，DC www.nap.edu
+(type: text, sub_type: none, box: (0.19, 0.97, 0.81, 0.99)) Copyright National Academy of Sciences. All rights reserved.
