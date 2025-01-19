@@ -1,0 +1,992 @@
+{
+    "record_id": "4020103_1",
+    "data": {
+        "logics": {
+            "docTree": [
+                {
+                    "backlink": {
+                        "上级": [
+                            "ROOT"
+                        ]
+                    },
+                    "level": 0,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "a73142f82a0bf25f1f9a033332428d81"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "ROOT"
+                        ]
+                    },
+                    "level": 0,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "bc31341899f848a372c4e5312d15ffcf"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "ROOT"
+                        ]
+                    },
+                    "level": 0,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "309eed9853f2ff2d0d548760e8661858"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "bc31341899f848a372c4e5312d15ffcf"
+                        ]
+                    },
+                    "level": 1,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "647a777b4a1fa759eff5d8f8a76720a3"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "bc31341899f848a372c4e5312d15ffcf"
+                        ]
+                    },
+                    "level": 1,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "dcce8b595a53d275c769634a69cfa2b0"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "bc31341899f848a372c4e5312d15ffcf"
+                        ]
+                    },
+                    "level": 1,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "16f675dd06680c65c3d88ace0635389e"
+                },
+                {
+                    "backlink": {
+                        "上级": [
+                            "bc31341899f848a372c4e5312d15ffcf"
+                        ]
+                    },
+                    "level": 1,
+                    "link": {
+                        "下级": [],
+                        "包含": []
+                    },
+                    "uniqueId": "4aafb975055e208a637931dc387e5040"
+                }
+            ],
+            "paragraphKVs": []
+        },
+        "docInfo": {
+            "pages": [
+                {
+                    "imageWidth": 432,
+                    "fileName": null,
+                    "sheetName": "",
+                    "fileIndex": 0,
+                    "pageIdCurDoc": 0,
+                    "source": null,
+                    "pdfParseResult": null,
+                    "imageHeight": 648,
+                    "isBlankPage": null,
+                    "sourceFileType": "cover",
+                    "imageUrl": "http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/publicDocStructure/docmind-20240827-e89d28a1fb2d49639f0b4a1a613138ab/0.png?Expires=1724793864&OSSAccessKeyId=LTAI5tQL9bqLHC5HYKV68DA9&Signature=dxBVmKA3KZQR421uzb8dW1sG8Pw%3D",
+                    "angle": 0.0,
+                    "sourceImagePath": null,
+                    "excelParseResult": null,
+                    "fileUrl": null,
+                    "wordParseResult": null,
+                    "imageType": "JPEG",
+                    "imageStorageKey": "docmind-20240827-e89d28a1fb2d49639f0b4a1a613138ab/0.png",
+                    "pageIdAllDocs": 0,
+                    "imageParseResult": "http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/ocr?Expires=1724793864&OSSAccessKeyId=LTAI5tQL9bqLHC5HYKV68DA9&Signature=1PrwDsB9eWxmvmz90%2FwqRIDfsxc%3D"
+                }
+            ],
+            "docType": "png",
+            "pageCountEstimate": 1
+        },
+        "styles": [
+            {
+                "fontName": "Verdana",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 0,
+                "deleteLine": false,
+                "fontSize": 12,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 1,
+                "deleteLine": false,
+                "fontSize": 58,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 2,
+                "deleteLine": false,
+                "fontSize": 25,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 3,
+                "deleteLine": false,
+                "fontSize": 55,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 4,
+                "deleteLine": false,
+                "fontSize": 49,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 5,
+                "deleteLine": false,
+                "fontSize": 24,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 6,
+                "deleteLine": false,
+                "fontSize": 21,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Arial_Narrow",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 7,
+                "deleteLine": false,
+                "fontSize": 15,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Verdana",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 8,
+                "deleteLine": false,
+                "fontSize": 11,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Verdana",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 9,
+                "deleteLine": false,
+                "fontSize": 13,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 10,
+                "deleteLine": false,
+                "fontSize": 13,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Arial_Narrow",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 11,
+                "deleteLine": false,
+                "fontSize": 17,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "微软雅黑",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 12,
+                "deleteLine": false,
+                "fontSize": 17,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Verdana",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 13,
+                "deleteLine": false,
+                "fontSize": 15,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Times_New_Roman",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 14,
+                "deleteLine": false,
+                "fontSize": 13,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Times_New_Roman",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 15,
+                "deleteLine": false,
+                "fontSize": 10,
+                "bold": true,
+                "italic": false
+            },
+            {
+                "fontName": "Arial_Narrow",
+                "charScale": 1.0,
+                "color": "000000",
+                "underline": false,
+                "styleId": 16,
+                "deleteLine": false,
+                "fontSize": 13,
+                "bold": true,
+                "italic": false
+            }
+        ],
+        "layouts": [
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 9,
+                        "y": 3
+                    },
+                    {
+                        "x": 331,
+                        "y": 3
+                    },
+                    {
+                        "x": 331,
+                        "y": 12
+                    },
+                    {
+                        "x": 9,
+                        "y": 12
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 7,
+                                "y": 1
+                            },
+                            {
+                                "x": 331,
+                                "y": 1
+                            },
+                            {
+                                "x": 331,
+                                "y": 13
+                            },
+                            {
+                                "x": 7,
+                                "y": 13
+                            }
+                        ],
+                        "styleId": 0,
+                        "text": "Innovations in the Food System： Exploring the Future of Fcod： Proceedings of a Workshop"
+                    }
+                ],
+                "index": 0,
+                "subType": "page_header",
+                "lineHeight": 0,
+                "text": "Innovations in the Food System： Exploring the Future of Fcod： Proceedings of a Workshop",
+                "alignment": "center",
+                "type": "head",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "16b4f10a0114aae6d5a47d8b78259659"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 119,
+                        "y": 64
+                    },
+                    {
+                        "x": 314,
+                        "y": 64
+                    },
+                    {
+                        "x": 314,
+                        "y": 190
+                    },
+                    {
+                        "x": 119,
+                        "y": 190
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 119,
+                                "y": 63
+                            },
+                            {
+                                "x": 311,
+                                "y": 63
+                            },
+                            {
+                                "x": 311,
+                                "y": 109
+                            },
+                            {
+                                "x": 119,
+                                "y": 109
+                            }
+                        ],
+                        "styleId": 1,
+                        "text": "INNOVATIONS"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 199,
+                                "y": 109
+                            },
+                            {
+                                "x": 231,
+                                "y": 109
+                            },
+                            {
+                                "x": 231,
+                                "y": 124
+                            },
+                            {
+                                "x": 199,
+                                "y": 124
+                            }
+                        ],
+                        "styleId": 2,
+                        "text": " in the"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 114,
+                                "y": 128
+                            },
+                            {
+                                "x": 195,
+                                "y": 128
+                            },
+                            {
+                                "x": 195,
+                                "y": 170
+                            },
+                            {
+                                "x": 114,
+                                "y": 170
+                            }
+                        ],
+                        "styleId": 3,
+                        "text": "FOOD"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 195,
+                                "y": 127
+                            },
+                            {
+                                "x": 317,
+                                "y": 127
+                            },
+                            {
+                                "x": 317,
+                                "y": 170
+                            },
+                            {
+                                "x": 195,
+                                "y": 170
+                            }
+                        ],
+                        "styleId": 4,
+                        "text": "SYSTEM"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 117,
+                                "y": 175
+                            },
+                            {
+                                "x": 314,
+                                "y": 175
+                            },
+                            {
+                                "x": 314,
+                                "y": 195
+                            },
+                            {
+                                "x": 117,
+                                "y": 195
+                            }
+                        ],
+                        "styleId": 5,
+                        "text": " EXPLORING THE FUTURE OF FOOD"
+                    }
+                ],
+                "index": 1,
+                "subType": "none",
+                "lineHeight": 3,
+                "text": "INNOVATIONS in the FOODSYSTEM EXPLORING THE FUTURE OF FOOD",
+                "alignment": "center",
+                "type": "title",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "a73142f82a0bf25f1f9a033332428d81"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 112,
+                        "y": 220
+                    },
+                    {
+                        "x": 320,
+                        "y": 220
+                    },
+                    {
+                        "x": 320,
+                        "y": 234
+                    },
+                    {
+                        "x": 112,
+                        "y": 234
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 110,
+                                "y": 218
+                            },
+                            {
+                                "x": 323,
+                                "y": 218
+                            },
+                            {
+                                "x": 323,
+                                "y": 236
+                            },
+                            {
+                                "x": 110,
+                                "y": 236
+                            }
+                        ],
+                        "styleId": 6,
+                        "text": "PROCEEDINGS OF A WORKSHOP"
+                    }
+                ],
+                "index": 2,
+                "subType": "none",
+                "lineHeight": 0,
+                "text": "PROCEEDINGS OF A WORKSHOP",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "bc31341899f848a372c4e5312d15ffcf"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 133,
+                        "y": 288
+                    },
+                    {
+                        "x": 298,
+                        "y": 288
+                    },
+                    {
+                        "x": 298,
+                        "y": 322
+                    },
+                    {
+                        "x": 133,
+                        "y": 322
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 134,
+                                "y": 287
+                            },
+                            {
+                                "x": 298,
+                                "y": 287
+                            },
+                            {
+                                "x": 298,
+                                "y": 299
+                            },
+                            {
+                                "x": 134,
+                                "y": 299
+                            }
+                        ],
+                        "styleId": 7,
+                        "text": "Melissa Maitin-Shepard， Rapporteur"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 187,
+                                "y": 312
+                            },
+                            {
+                                "x": 243,
+                                "y": 312
+                            },
+                            {
+                                "x": 243,
+                                "y": 322
+                            },
+                            {
+                                "x": 187,
+                                "y": 322
+                            }
+                        ],
+                        "styleId": 8,
+                        "text": " Food Forum"
+                    }
+                ],
+                "index": 3,
+                "subType": "none",
+                "lineHeight": 15,
+                "text": "Melissa Maitin-Shepard， Rapporteur Food Forum",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "309eed9853f2ff2d0d548760e8661858"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 157,
+                        "y": 336
+                    },
+                    {
+                        "x": 274,
+                        "y": 336
+                    },
+                    {
+                        "x": 274,
+                        "y": 346
+                    },
+                    {
+                        "x": 157,
+                        "y": 346
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 157,
+                                "y": 336
+                            },
+                            {
+                                "x": 274,
+                                "y": 336
+                            },
+                            {
+                                "x": 274,
+                                "y": 346
+                            },
+                            {
+                                "x": 157,
+                                "y": 346
+                            }
+                        ],
+                        "styleId": 9,
+                        "text": "Food and Nutrition Board"
+                    }
+                ],
+                "index": 4,
+                "subType": "para",
+                "lineHeight": 0,
+                "text": "Food and Nutrition Board",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "647a777b4a1fa759eff5d8f8a76720a3"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 150,
+                        "y": 360
+                    },
+                    {
+                        "x": 283,
+                        "y": 360
+                    },
+                    {
+                        "x": 283,
+                        "y": 371
+                    },
+                    {
+                        "x": 150,
+                        "y": 371
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 148,
+                                "y": 360
+                            },
+                            {
+                                "x": 282,
+                                "y": 360
+                            },
+                            {
+                                "x": 282,
+                                "y": 370
+                            },
+                            {
+                                "x": 148,
+                                "y": 370
+                            }
+                        ],
+                        "styleId": 10,
+                        "text": "Health and Medicine Division"
+                    }
+                ],
+                "index": 5,
+                "subType": "para",
+                "lineHeight": 0,
+                "text": "Health and Medicine Division",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "dcce8b595a53d275c769634a69cfa2b0"
+            },
+            {
+                "firstLinesChars": 47,
+                "pos": [
+                    {
+                        "x": 106,
+                        "y": 395
+                    },
+                    {
+                        "x": 325,
+                        "y": 395
+                    },
+                    {
+                        "x": 325,
+                        "y": 423
+                    },
+                    {
+                        "x": 106,
+                        "y": 423
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 151,
+                                "y": 393
+                            },
+                            {
+                                "x": 282,
+                                "y": 393
+                            },
+                            {
+                                "x": 282,
+                                "y": 407
+                            },
+                            {
+                                "x": 151,
+                                "y": 407
+                            }
+                        ],
+                        "styleId": 11,
+                        "text": "The National Academies of"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 104,
+                                "y": 410
+                            },
+                            {
+                                "x": 327,
+                                "y": 410
+                            },
+                            {
+                                "x": 327,
+                                "y": 424
+                            },
+                            {
+                                "x": 104,
+                                "y": 424
+                            }
+                        ],
+                        "styleId": 12,
+                        "text": " SCIENCES· ENGINEERING ·MEDICINE"
+                    }
+                ],
+                "index": 6,
+                "subType": "para",
+                "lineHeight": 4,
+                "text": "The National Academies of SCIENCES· ENGINEERING ·MEDICINE",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "16f675dd06680c65c3d88ace0635389e"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 143,
+                        "y": 539
+                    },
+                    {
+                        "x": 289,
+                        "y": 539
+                    },
+                    {
+                        "x": 289,
+                        "y": 578
+                    },
+                    {
+                        "x": 143,
+                        "y": 578
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 136,
+                                "y": 538
+                            },
+                            {
+                                "x": 295,
+                                "y": 538
+                            },
+                            {
+                                "x": 295,
+                                "y": 549
+                            },
+                            {
+                                "x": 136,
+                                "y": 549
+                            }
+                        ],
+                        "styleId": 13,
+                        "text": "THE NATIONAL ACADEMIES PRESS"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 182,
+                                "y": 554
+                            },
+                            {
+                                "x": 250,
+                                "y": 554
+                            },
+                            {
+                                "x": 250,
+                                "y": 564
+                            },
+                            {
+                                "x": 182,
+                                "y": 564
+                            }
+                        ],
+                        "styleId": 14,
+                        "text": " Washington，DC"
+                    },
+                    {
+                        "pos": [
+                            {
+                                "x": 185,
+                                "y": 569
+                            },
+                            {
+                                "x": 245,
+                                "y": 569
+                            },
+                            {
+                                "x": 245,
+                                "y": 577
+                            },
+                            {
+                                "x": 185,
+                                "y": 577
+                            }
+                        ],
+                        "styleId": 15,
+                        "text": " www.nap.edu"
+                    }
+                ],
+                "index": 7,
+                "subType": "para",
+                "lineHeight": 5,
+                "text": "THE NATIONAL ACADEMIES PRESS Washington，DC www.nap.edu",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "4aafb975055e208a637931dc387e5040"
+            },
+            {
+                "firstLinesChars": 0,
+                "pos": [
+                    {
+                        "x": 81,
+                        "y": 630
+                    },
+                    {
+                        "x": 350,
+                        "y": 630
+                    },
+                    {
+                        "x": 350,
+                        "y": 640
+                    },
+                    {
+                        "x": 81,
+                        "y": 640
+                    }
+                ],
+                "blocks": [
+                    {
+                        "pos": [
+                            {
+                                "x": 79,
+                                "y": 629
+                            },
+                            {
+                                "x": 351,
+                                "y": 629
+                            },
+                            {
+                                "x": 351,
+                                "y": 640
+                            },
+                            {
+                                "x": 79,
+                                "y": 640
+                            }
+                        ],
+                        "styleId": 16,
+                        "text": "Copyright National Academy of Sciences. All rights reserved."
+                    }
+                ],
+                "index": 8,
+                "subType": "none",
+                "lineHeight": 0,
+                "text": "Copyright National Academy of Sciences. All rights reserved.",
+                "alignment": "center",
+                "type": "text",
+                "pageNum": [
+                    0
+                ],
+                "uniqueId": "3c8b07209763ad8f3feb01ff1d77555e"
+            }
+        ],
+        "version": "1.0.0"
+    }
+}
