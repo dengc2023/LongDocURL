@@ -7,12 +7,12 @@ Repository for the paper "LongDocURL: a Comprehensive Multimodal Long Document B
 
 **Dataset**: [dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
 
-# About LongDocURL
+## About LongDocURL
 The LongDocURL benchmark is specifically designed for assessing the ability of models in long document understanding.
 We collect 2,325 high-quality question-answering pairs, covering 396 PDF-formatted documents and more than 33,000 pages, significantly outperforming existing benchmarks.
 Our open dataset can be found at [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/). You can refer to [Blog Website](https://longdocurl.github.io/) for more infomation.
 
-# Evaluation
+## Evaluation
 
 **1. (Optional) Download & Extract PDFs**
 
@@ -57,7 +57,7 @@ To calculate generalized accuracy in a more fine-grained way like `evaluation_re
 bash scripts/calculate_metrics_fine_grained.sh
 ```
 
-#  🏆 Leaderboard 🏆
+##  🏆 Leaderboard 🏆
 
 | Model                     | Size   | Understanding  | Reasoning   | Locating   | Total |
 |---------------------------|--------|----------------|-------------|------------|-------|
@@ -68,3 +68,36 @@ bash scripts/calculate_metrics_fine_grained.sh
 | LLaVA-OneVision-Chat      | 7B     | 30.5           | 19.0        | 18.7       | 25.0  |
 | LLaVA-Next-Interleave-DPO | 7B     | 21.6           | 13.9        | 7.6        | 16.2  |
 | Llama-3.2                 | 11B    | 12.9           | 9.4         | 2.7        | 9.2   |
+
+
+## Citation
+
+```
+@article{chao-etal-2024-longdocurl,
+  author       = {Chao Deng and
+                  Jiale Yuan and
+                  Pi Bu and
+                  Peijie Wang and
+                  Zhong{-}Zhi Li and
+                  Jian Xu and
+                  Xiao{-}Hui Li and
+                  Yuan Gao and
+                  Jun Song and
+                  Bo Zheng and
+                  Cheng{-}Lin Liu},
+  title        = {LongDocURL: a Comprehensive Multimodal Long Document Benchmark Integrating
+                  Understanding, Reasoning, and Locating},
+  journal      = {CoRR},
+  volume       = {abs/2412.18424},
+  year         = {2024},
+  url          = {https://doi.org/10.48550/arXiv.2412.18424},
+  doi          = {10.48550/ARXIV.2412.18424},
+  eprinttype    = {arXiv},
+  eprint       = {2412.18424},
+  timestamp    = {Sat, 25 Jan 2025 12:51:18 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2412-18424.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+```
+
+Please kindly cite our paper if this paper and the codes are helpful.
