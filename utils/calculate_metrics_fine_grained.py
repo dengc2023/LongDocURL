@@ -9,11 +9,13 @@ from utils.utils_score_v3 import eval_score
 
 def calculate_accuracy_fine_grained(samples, score_dict):
     for sample in samples:
-        pred_ans, annotation, answer_format = sample["pred"], sample["answer"], sample["answer_format"]
+        pred_ans, annotation, answer_format, multiple_pred = sample["pred"], sample["answer"], sample["answer_format"], True if "multiple_pred" in sample else False
         if pred_ans == "Fail to extract":
             score_v3 = 0.0
-        else:
+        elif not multiple_pred:
             score_v3 = eval_score(annotation, pred_ans, answer_format)
+        else:
+            score_v3 = max([eval_score(annotation, item, answer_format) for item in pred_ans])
         sample["score_v3"] = score_v3
         
     # Main_Task
