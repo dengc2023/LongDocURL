@@ -1,22 +1,48 @@
 # Welcome to LongDocURL!
-Repository for the paper "LongDocURL: a Comprehensive Multimodal Long Document Benchmark Integrating Understanding, Reasoning, and Locating".
+Repository for the ACL 2025 main paper "LongDocURL: a Comprehensive Multimodal Long Document Benchmark Integrating Understanding, Reasoning, and Locating".
 
-**Paper**: [paper](https://arxiv.org/pdf/2412.18424)
-
-**Blog Website**: [longdocurl. github. io](https://longdocurl.github.io/)
-
-**Dataset**: [dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
+**Resources**: [Paper](https://arxiv.org/pdf/2412.18424) • [Project Page](https://longdocurl.github.io/) • [Dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
 
 # About LongDocURL
 The LongDocURL benchmark is specifically designed for assessing the ability of models in long document understanding.
 We collect 2,325 high-quality question-answering pairs, covering 396 PDF-formatted documents and more than 33,000 pages, significantly outperforming existing benchmarks.
 Our open dataset can be found at [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/). You can refer to [Blog Website](https://longdocurl.github.io/) for more infomation.
 
+# Environment Setup (Qwen2-VL Series)
+
+## Prerequisites
+
+- Python == 3.10
+- CUDA == 12.2
+
+## Installation
+
+1. Create and activate a virtual environment:
+```bash
+conda create -n longdocurl python=3.10 -y  # Linux/MacOS
+conda activate longdocurl # or source activate longdocurl
+cd /path/to/LongDocURL
+```
+
+2. Install required packages:
+```bash
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+3. For flash-attn2 installation issues:
+    - Download the appropriate wheel from [flash-attention releases](https://github.com/Dao-AILab/flash-attention/releases)
+    - We used this version: [flash_attn-2.6.2+cu123torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl](https://github.com/Dao-AILab/flash-attention/releases/download/v2.6.2/flash_attn-2.6.2+cu123torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl)
+    - Install locally:
+
+```bash
+pip install path/to/downloaded/flash_attn-2.6.2+cu123torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+```
+
 # Evaluation
 
-**1. (Optional) Download & Extract PDFs**
+**1. Download & Extract PDFs** (If you have already downloaded the PNG package, please skip this step)
 
-Download PDFs and qa file (.jsonl) from [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/). Run the following commands to extract PDFs into pngs and json files (by PyMuPDF).
+Download PDFs and qa file (.jsonl) from [HuggingFace](https://huggingface.co/datasets/dengchao/LongDocURL/). Run the following commands to extract PDFs into pngs and json files (by PyMuPDF).
 
 ```bash
 bash utils/run_extract_ccpdf.sh
@@ -31,15 +57,25 @@ Images will be organized in following ways:
     └── 4001002.png
 ```
 
-**2. Other Configurations**
-- `api_key`: update `config/api_config.json`, used to extract short answer from detailed response.
-- `qa_jsonl`: update `data/LongDocURL.jsonl`, downloaded from [LongDocURL](https://huggingface.co/datasets/dengchao/LongDocURL/).
-- `api_models`: default `gpt4o-2024-05-13` for extracting short answer. if use our codes to evaluate proprietary models, please check and modify `eval/api_models/model.py`.
+**2. Configurations**
+- `api_key`: update `config/api_config.json` with your API key. For Alibaba Cloud models, you can apply for free quota at [Bailian Console](https://bailian.console.aliyun.com/console?tab=model#/model-market). The configuration should include both `api_key` and `base_url`.
+- `qa_jsonl`: update `data/LongDocURL.jsonl`. Note that this file only contains a small sample of QA pairs. The complete dataset can be downloaded from [HuggingFace](https://huggingface.co/datasets/dengchao/LongDocURL/).
+- `api_models`: by default, we use `gpt4o-2024-05-13` for extracting short answers when evaluating API models. For open-source models, we use `qwen-turbo` for short answer extraction. If you use our code to evaluate proprietary models, please check and modify `eval/api_models/model.py`.
 
-**3. Evaluating API Models**
+**3. Evaluating**
+
+For api models:
+
 ```bash
 bash scripts/eval_api_models.sh
 ```
+
+For open-source models (currently only support qwen2-vl and qwen2.5-vl series):
+
+```bash
+bash scripts/eval_open_lvlms.sh
+```
+
 
 Options to note:
 - `process_mode`: default `serial`. Set `parallel` if parallel execution is needed. Default number of parallel processes is 8.

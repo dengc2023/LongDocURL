@@ -2,5 +2,9 @@
     "gpt4o": {
         "access_key": "<api_key>",
         "base_url": "<base_url>"
+    },
+    "qwen": {
+        "access_key": "<qwen_api_key>",
+        "base_url": "<qwen_base_url>"
     }
 }
