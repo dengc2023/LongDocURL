@@ -1,7 +1,7 @@
 # Welcome to LongDocURL!
 Repository for the ACL 2025 main paper "LongDocURL: a Comprehensive Multimodal Long Document Benchmark Integrating Understanding, Reasoning, and Locating".
 
-**Resources**: [Paper](https://arxiv.org/pdf/2412.18424) • [Project Page](https://longdocurl.github.io/) • [Dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
+**Resources**: [Paper](https://arxiv.org/pdf/2412.18424v3) • [Project Page](https://longdocurl.github.io/) • [Dataset](https://huggingface.co/datasets/dengchao/LongDocURL/)
 
 # About LongDocURL
 The LongDocURL benchmark is specifically designed for assessing the ability of models in long document understanding.
