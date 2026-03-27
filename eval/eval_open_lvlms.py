@@ -32,7 +32,7 @@ import torch
 system_prompt = "You are an expert in visual document question-answering, please answer our questions based on the given images.\n"
 
 # TODO
-project_prefix = "/home/dengchao/Projects/CodeLib/LongDocURL/"
+project_prefix = "/home/dataset-local/Projects/CodeLib/LongDocURL/"
 
 config_file = os.path.join(project_prefix, "config/api_config.json")
 extractor_prompt_path = os.path.join(project_prefix, "eval/prompt_for_answer_extraction.md")
@@ -51,6 +51,8 @@ model_name2inferencer = {
     "qwen2-vl-7b": "Qwen2VLInferencer",
     "qwen25-vl-7b": "Qwen2VLInferencer"
 }
+
+model_pool = {}
 
 prompt_sign = True
 
@@ -102,17 +104,17 @@ def delete_generate_dataset(dataset, output_dataset):
     unfinished_dataset = [sample for sample in dataset if sample['question_id'] not in finished_question_id_set]
     return unfinished_dataset
 
-def eval_per_record(shared_dict, task, gpu_id):
-    print("--------------------------------------")
+def eval_per_record(model_pool, task=None, gpu_id=None, inferencer=None):
     case, output_datapath, model_name = task
 
-    inferencer = eval(model_name2inferencer[model_name])(model_name)
+    if inferencer is None:
+        inferencer = eval(model_name2inferencer[model_name])(model_name)
 
     question = case["question"]
     prompt = system_prompt + "Following is our question: \n" + f"<question>{question}</question>" + "\n"
 
     try:
-        result = inferencer.infer(prompt, case["images"], device=f"cuda:{gpu_id}" if gpu_id else "cpu", model_pool=shared_dict)
+        result = inferencer.infer(prompt, case["images"], device=f"cuda:{gpu_id}" if gpu_id is not None else "cpu", model_pool=model_pool)
     except Exception as e:
         print("error: ", e)
         result = None
@@ -165,19 +167,34 @@ def eval_per_record(shared_dict, task, gpu_id):
         print("error")
 
 
-def task_scheduler(shared_dict, task_queue, gpu_queue, progress_counter):
+def task_scheduler(task_queue, gpu_queue, progress_counter, active_tasks):
+    gpu_id = gpu_queue.get()
+    inferencer = None
+    local_model_pool = {}  # Local pool for this process, NO Manager sharing for models
     while not task_queue.empty():
-        task = task_queue.get()
-        gpu_id = gpu_queue.get()
-        eval_per_record(shared_dict, task, gpu_id)
-        # update progress
-        # with progress_counter.get_lock():
-        #     progress_counter.value += 1
-        progress_counter.value += 1 # the manager is already thread safe
-        gpu_queue.put(gpu_id)  # put GPU resources back into the queue
+        try:
+            task = task_queue.get_nowait()
+        except:
+            break
+
+        case, output_datapath, model_name = task
+        if inferencer is None:
+            inferencer = eval(model_name2inferencer[model_name])(model_name)
+
+        # Register current doc_no
+        doc_no = case.get("doc_no", "unknown")
+        active_tasks[gpu_id] = doc_no
+
+        eval_per_record(local_model_pool, task, gpu_id, inferencer=inferencer)
+
+        progress_counter.value += 1
+
+    if gpu_id in active_tasks:
+        del active_tasks[gpu_id]
+    gpu_queue.put(gpu_id)  # put GPU resources back into the queue
 
 
-def evaluate(dataset, output_datapath, model_name="gpt4o", process_mode="serial", extra_infos=None):
+def evaluate(dataset, output_datapath, model_name="gpt4o", num_gpus=0):
 
     if os.path.exists(output_datapath):
         output_dataset = read_jsonl_file(output_datapath)
@@ -194,77 +211,80 @@ def evaluate(dataset, output_datapath, model_name="gpt4o", process_mode="serial"
     start_time = datetime.datetime.now()
     print("job start time:", start_time)
 
-    if extra_infos is not None:
-        devices = extra_infos.pop("devices", "cpu")
-        if len(devices) >= 1:
-            args_list = []
-            for i, case in enumerate(dataset):
-                args_list.append((case, output_datapath, model_name))
-           
-            task_queue = multiprocessing.Queue()
-            for args in args_list:
-                task_queue.put(args)
-
-            gpu_queue = multiprocessing.Queue()
-            for gpu_id in range(len(devices)):
-                gpu_queue.put(str(gpu_id))
-                
-            with multiprocessing.Manager() as manager:
-                shared_dict = manager.dict()  # creating a shared dictionary
-                progress_counter = manager.Value('i', 0)
-                processes = []
-
-                for i in range(len(devices)):
-                    p = multiprocessing.Process(target=task_scheduler, args=(shared_dict, task_queue, gpu_queue, progress_counter))
-                    p.start()
-                    processes.append(p)
-    
-                # start the progress bar monitoring thread
-                with tqdm(total=len(args_list), desc="Processing") as pbar:
-                    last_progress = 0
-                    while any(p.is_alive() for p in processes):
-                        current_progress = progress_counter.value
-                        pbar.update(current_progress - last_progress)
-                        last_progress = current_progress
-                        time.sleep(0.1)
-                    
-                    # make sure the final progress shows 100%
-                    pbar.n = len(args_list)
-                    pbar.refresh()
-
-                for p in processes:
-                    p.join()
-
-    elif process_mode == "serial":
+    # Use parallel mode if multiple GPUs are available
+    if num_gpus > 1:
+        print(f"Running in multi-GPU parallel mode on {num_gpus} devices.")
+        task_queue = multiprocessing.Queue()
         for args in args_list:
-            eval_per_record(args)
-    elif process_mode == "parallel":
-        with Pool(processes=torch.cuda.device_count()) as pool:  # You can adjust the number of processes as needed
-            list(tqdm(pool.imap(eval_per_record, args_list), total=len(args_list)))
+            task_queue.put(args)
+
+        gpu_queue = multiprocessing.Queue()
+        for gpu_id in range(num_gpus):
+            gpu_queue.put(str(gpu_id))
+
+        with multiprocessing.Manager() as manager:
+            progress_counter = manager.Value('i', 0)
+            active_tasks = manager.dict() # track what each GPU is doing
+            processes = []
+
+            for i in range(num_gpus):
+                p = multiprocessing.Process(target=task_scheduler, args=(task_queue, gpu_queue, progress_counter, active_tasks))
+                p.start()
+                processes.append(p)
+
+            # start the progress bar monitoring thread
+            with tqdm(total=len(args_list), desc="Processing (Parallel)") as pbar:
+                last_progress = 0
+                while any(p.is_alive() for p in processes):
+                    current_progress = progress_counter.value
+                    pbar.update(current_progress - last_progress)
+                    last_progress = current_progress
+
+                    # Update progress bar description with active documents
+                    if active_tasks:
+                        active_docs = list(active_tasks.values())
+                        pbar.set_postfix(docs=active_docs, refresh=True)
+
+                    time.sleep(0.5)
+
+                # make sure the final progress shows 100%
+                pbar.n = len(args_list)
+                pbar.refresh()
+
+            for p in processes:
+                p.join()
     else:
-        raise ValueError("process mode error!")
+        global model_pool
+        # Serial mode for 1 GPU or CPU
+        mode_str = "GPU:0" if num_gpus == 1 else "CPU"
+        print(f"Running in serial mode on {mode_str}.")
+        inferencer = eval(model_name2inferencer[model_name])(model_name)
+        gpu_id = "0" if num_gpus == 1 else None
+
+        with tqdm(total=len(args_list), desc=f"Processing ({mode_str})") as pbar:
+            for args in args_list:
+                case = args[0]
+                pbar.set_postfix(doc=case.get("doc_no", "unknown"))
+                eval_per_record(model_pool, args, gpu_id=gpu_id, inferencer=inferencer)
+                pbar.update(1)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--qa_file', type=str, default="LongDocURL_public.jsonl")
-    parser.add_argument('--results_file', type=str, default="evaluation_results/open_lvlms/results_qwen2vl_7b.jsonl") 
-    parser.add_argument('--process_mode', type=str, default="serial") # serial/parallel
+    parser.add_argument('--results_file', type=str, default="evaluation_results/open_lvlms/results_qwen2vl_7b.jsonl")
+    parser.add_argument('--process_mode', type=str, default="serial") # No longer used for open models, kept for compatibility if needed
     # parser.add_argument('--input_format', type=str, default="e2e") # e2e/ocr
     parser.add_argument('--image_prefix', type=str, default="/data/data/LongDocURL/pdf_pngs/4000-4999")
     parser.add_argument('--model_name', type=str, default="qwen2-vl-7b") # gemini15_pro/claude35_sonnet/qwen_vl_max/gpt4o
-    parser.add_argument('--devices', type=str, default="0") # visible_cuda_devices
 
     args = parser.parse_args()
 
     multiprocessing.set_start_method('spawn')
-    
-    # modify:
+
+    # Auto-detect GPUs
     num_gpus = torch.cuda.device_count()
-    extra_infos = dict(
-        devices=args.devices.strip().split(",")
-    )
-    assert len(extra_infos["devices"]) <= num_gpus
+    print(f"Total available GPUs: {num_gpus}")
 
     input_datapath = args.qa_file
     output_datapath = args.results_file
@@ -278,7 +298,8 @@ if __name__ == "__main__":
     while try_cnt:
         try_cnt -= 1
         try:
-            evaluate(dataset, output_datapath, model_name=args.model_name, process_mode=args.process_mode, extra_infos=extra_infos)
+            evaluate(dataset, output_datapath, model_name=args.model_name, num_gpus=num_gpus)
+            break
         except Exception as e:
             print(f"An error occurred: {e}")
             print("Restarting script...")

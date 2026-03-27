@@ -12,7 +12,7 @@ import oss2
 import json
 
 # TODO
-project_prefix = "/mnt/workspace/Projects/CodeLib/LongDocURL/"
+project_prefix = "/home/dataset-local/Projects/CodeLib/LongDocURL/"
 config_file = os.path.join(project_prefix, "config/api_config.json")
 
 class APIInferencer(ABC):
@@ -158,19 +158,22 @@ class OpenLVLMsInferencer(ABC):
             # model_key = f"{model_name}_{device}"  # combine model name and device ID as unique key
             model_key = f"{model_name}"  # use model name as unique key
             if model_key not in model_pool:
+                # Use "cpu" as fallback if device is None or invalid
+                target_device = device if device is not None else "cpu"
+
                 if model_name in ["qwen2-vl-7b"]:
                     model = Qwen2VLForConditionalGeneration.from_pretrained(
                         ckpt_path,
                         torch_dtype=torch.bfloat16,
                         attn_implementation="flash_attention_2",
-                        device_map="cpu",
+                        device_map=target_device,
                     )
                 elif model_name in ["qwen25-vl-7b"]:
                     model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
                         ckpt_path,
                         torch_dtype=torch.bfloat16,
                         attn_implementation="flash_attention_2",
-                        device_map="cpu",
+                        device_map=target_device,
                     )
                 else:
                     raise ValueError("The model name specified does not exists!")
@@ -178,8 +181,11 @@ class OpenLVLMsInferencer(ABC):
                 model_pool[model_key] = (model, processor)
             else:
                 model, processor = model_pool[model_key]
-            model = model.to(device)
-   
+
+            # Ensure model is on the correct device if it was somehow moved
+            if str(model.device) != device:
+                model = model.to(device)
+
             # Preparation for inference
             text = processor.apply_chat_template(
                 messages, tokenize=False, add_generation_prompt=True
@@ -261,8 +267,8 @@ class Qwen2VLInferencer(OpenLVLMsInferencer):
     def __init__(self, model_name):
         self.model_name = model_name
         self.ckpt_paths = {
-            "qwen2-vl-7b": "/data1/model/Qwen/Qwen2-VL-7B-Instruct",
-            "qwen25-vl-7b": "/data1/model/Qwen/Qwen2.5-VL-7B-Instruct"
+            "qwen2-vl-7b": "/home/dataset-local/model/Qwen/Qwen2-VL-7B-Instruct",
+            "qwen25-vl-7b": "/home/dataset-local/model/Qwen/Qwen2.5-VL-7B-Instruct"
         }
     def infer(self, prompt: str, image_path: str, **kwargs) -> str:
         if self.model_name in self.ckpt_paths:
